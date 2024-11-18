@@ -5,7 +5,7 @@ char konto[64];
 
 void handleInterrupt() {
   static unsigned long previousMillis = 0;
-  unsigned long currentMillis = millis(); // Pobranie aktualnego czasu
+  unsigned long currentMillis = millis();
   if (currentMillis - previousMillis >= 1000) { 
     previousMillis = currentMillis;
     Keyboard.print(konto);
@@ -32,6 +32,3 @@ void loop() {
     eeprom_update_block (konto, (void *)0, sizeof (konto));
   }
 }
-/*
- * 
- */
