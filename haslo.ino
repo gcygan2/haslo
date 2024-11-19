@@ -15,7 +15,7 @@ void handleInterrupt() {
     previousMillis = currentMillis;
     eeprom_read_block (konto, (void *)(digitalReadByte() * sizeof (konto)), sizeof (konto));
     Keyboard.print(konto);
-    delay(400);
+    delay(1000);
     Keyboard.write(KEY_RETURN);
   }
 }
@@ -33,8 +33,6 @@ void setup() {
 }
 
 void loop() {
-  //Serial.println (digitalReadByte());
-  //delay (5000);
   if (Serial.available() > 0) {
     int bytesRead = Serial.readBytesUntil('\n', konto, sizeof (konto) - 1);
     konto[bytesRead] = '\0';
