@@ -5,7 +5,7 @@ char konto[64];
 
 uint8_t digitalReadByte()
 {
-  return (digitalRead(A3) << 3) | (digitalRead(A2) << 2) | (digitalRead(A1) << 1) | digitalRead(A0);   
+  return ~((digitalRead(A3) << 3) | (digitalRead(A2) << 2) | (digitalRead(A1) << 1) | digitalRead(A0)) & 0x0f;
 }
 
 void handleInterrupt() {
