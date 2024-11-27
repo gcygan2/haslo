@@ -15,7 +15,7 @@ void handleInterrupt() {
     previousMillis = currentMillis;
     eeprom_read_block (konto, (void *)(digitalReadByte() * sizeof (konto)), sizeof (konto));
     Keyboard.print(konto);
-    delay(1000);
+    delay(2000);
     Keyboard.write(KEY_RETURN);
   }
 }
@@ -40,5 +40,6 @@ void loop() {
       if (konto[i] == '\\') konto[i] = '\t';
     }
     eeprom_update_block (konto, (void *)(digitalReadByte() * sizeof (konto)), sizeof (konto));
+    Serial.write("OK");
   }
 }
